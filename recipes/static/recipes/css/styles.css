@@ -37,6 +37,7 @@
 
     --font-primary: sans-serif;
     --font-headings: 'Roboto Slab', serif;
+    --font-paragraph: 'Roboto', sans-serif;
 
     --spacing-gutter-small: 2rem;
     --spacing-gutter-medium: 3rem;
@@ -67,6 +68,11 @@ h4,
 h5,
 h6 {
     font-family: var(--font-headings);
+}
+
+p {
+    font-family: var(--font-paragraph);
+    line-height: 2.3rem;
 }
 
 a {
@@ -267,3 +273,16 @@ a {
     box-shadow: -5px 5px 15px rgba(0, 0, 0, .2);
 }
 
+.preparation-steps * {
+    margin: 2rem 0;
+}
+
+.preparation-steps ol,
+.preparation-steps ul {
+    margin: 2rem;
+    padding: 0 2rem;
+}
+
+.preparation-steps li {
+    margin: .5rem;
+}
