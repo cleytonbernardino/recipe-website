@@ -19,7 +19,7 @@ class RecipeModelTest(RecipeTestBase):
                 username='Author test for is_html_false'),
             title='Recipe Title',
             description='Uma Descrição',
-            slug='Recipe',
+            slug='Recipe-no-Default',
             preparation_time=10,
             preparation_time_unit='Minutos',
             servings=5,
