@@ -1,4 +1,5 @@
 from django.urls import resolve, reverse
+
 from recipes import views
 
 from .test_recipe_base import RecipeTestBase
@@ -14,6 +15,12 @@ class RecipeCategoryViewTest(RecipeTestBase):
             reverse('recipes:category', kwargs={'category_id': 10000})
         )
         self.assertEqual(response.status_code, 404)
+
+    def test_view_category_loads_corret_template(self):
+        self.make_recipe()
+        response = self.client.get(
+            reverse('recipes:category', kwargs={'category_id': 1}))
+        self.assertTemplateUsed(response, 'recipes/pages/category.html')
 
     def test_recipe_category_templates_loads_recipes(self):
         needed_title = 'Category Test'

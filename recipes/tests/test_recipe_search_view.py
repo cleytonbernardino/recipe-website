@@ -1,4 +1,5 @@
 from django.urls import resolve, reverse
+
 from recipes import views
 
 from .test_recipe_base import RecipeTestBase
@@ -56,3 +57,7 @@ class RecipeSearchViewTest(RecipeTestBase):
 
         self.assertIn(recipe_two, response_both.context['recipes'])
         self.assertIn(recipe_one, response_both.context['recipes'])
+
+    def test_search_not_found_raises_html404(self):
+        response = self.client.get(reverse('recipes:search') + '?search=')
+        self.assertEquals(404, response.status_code)
