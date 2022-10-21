@@ -91,17 +91,12 @@ class PaginationTest(RecipeTestBase):
         self.assertEqual([17, 18, 19, 20], pagination)
 
     def test_if_the_page_is_float_the_page_must_be_1(self):
-        factory = RequestFactory()
-        response = factory.get(reverse('recipes:home'))
-        for n in range(5):
-            self.make_recipe(
-                slug=str(n),
-                author_data={'username': str(n)}
-            )
+        request = RequestFactory()
+        response = request.get(reverse('recipes:home') + '?page=8.50')
         recipes = Recipe.objects.all()
-        page_obj, page_range = make_pagination(
+        _, page_range = make_pagination(
             response,
             recipes,
             per_page=9,
-        )['pagination']
-        ...
+        )
+        self.assertEqual(page_range['current_page'], 1)

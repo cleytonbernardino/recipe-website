@@ -80,6 +80,62 @@ a {
     color: inherit;
 }
 
+/* Message */
+.messages-container{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: calc(var(--spacing-gutter-medium) /2);
+}
+
+.message {
+    padding: 1rem;
+    border: 1px solid var(--color-dark-text);
+    border-radius: 4px;
+    background: var(--color-gray-2);
+    color: var(--color-dark-text);
+}
+
+.message-error {
+    border: 1px solid var(--color-dark-text);
+    background: var(--color-error-light);
+    color: var(--color-error-dark);
+}
+
+.message-sucess {
+    border: 1px solid var(--color-success-dark);
+    background: var(--color-success-light);
+    color: var(--color-success-dark);
+}
+
+.message-warning {
+    border: 1px solid var(--color-warning-dark);
+    background: var(--color-warning-light);
+    color: var(--color-warning-dark);
+}
+
+.message-alert {
+    border: 1px solid var(--color-alert-dark);
+    background: var(--color-alert-light);
+    color: var(--color-alert-dark);
+}
+
+.message-info {
+    border: 1px solid var(--color-info-dark);
+    background: var(--color-info-light);
+    color: var(--color-info-dark);
+}
+
+.message-debug {
+    border: 1px solid var(--color-debug-dark);
+    background: var(--color-debug-light);
+    color: var(--color-debug-dark);
+}
+
+/* Generic */
+.center {
+    text-align: center;
+}
+
 .container {
     max-width: 144rem;
     margin: 0 auto;
@@ -304,4 +360,54 @@ a {
 
 .pagination .current-page {
     background: var(--color-primary-dark);
+}
+
+/* FORMS */
+.form-content {
+    max-width: 64rem;
+    margin: 0 auto;
+    margin-bottom: var(--spacing-gutter-medium);
+}
+
+.form-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: calc(var(--spacing-gutter-medium) / 2) var(--spacing-gutter-medium);
+
+}
+
+.form-content button {
+    padding: 1rem 2rem;
+    border: none;
+    background: var(--color-primary-dark);
+    color: white;
+    cursor: pointer;
+}
+
+.form-content label,
+.form-content .help-text,
+.errorlist {
+    display: block;
+    margin: .5rem 0;
+    font-size: 1.4rem;
+    list-style-type: none;
+}
+
+.errorlist {
+    color: var(--color-error-dark);
+}
+
+.form-content input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: .4rem;
+    border: 1px solid var(--color-primary-dark);
+}
+
+
+@media (max-width: 600px) {
+    .main-content-list,
+    .form-content-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
 }

@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from django.urls import resolve, reverse
 
 from recipes import views
@@ -47,3 +49,20 @@ class RecipeHomeViewTest(RecipeTestBase):
         self.assertIn(  # This test does the same as the one above, it's just for learning even this one  # noqa: E501
            "<h2 style='text-align: center; padding: 4rem;'>No Recipes Have Been Published Yet 😅</h2>",  # noqa: E501
           content)  # noqa: E131
+
+    @patch('recipes.views.PER_PAGE', new=3)
+    def test_recipe_home_is_paginated(self):
+        for i in range(8):
+            kwargs = {
+                'slug': f'this a number {i}',
+                'author_data': {'username': f'A_user_{i}'}
+            }
+            self.make_recipe(**kwargs)
+        response = self.client.get(reverse('recipes:home'))
+        recipes = response.context['recipes']
+        paginator = recipes.paginator
+
+        self.assertEqual(paginator.num_pages, 3)
+        self.assertEqual(len(paginator.get_page(1)), 3)
+        self.assertEqual(len(paginator.get_page(2)), 3)
+        self.assertEqual(len(paginator.get_page(3)), 2)

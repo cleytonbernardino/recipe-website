@@ -60,4 +60,4 @@ class RecipeSearchViewTest(RecipeTestBase):
 
     def test_search_not_found_raises_html404(self):
         response = self.client.get(reverse('recipes:search') + '?search=')
-        self.assertEquals(404, response.status_code)
+        self.assertEqual(404, response.status_code)

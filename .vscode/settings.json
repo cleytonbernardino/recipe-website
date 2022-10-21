@@ -10,5 +10,6 @@
         "./recipes",
         "-p",
         "test_*.py"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "basic"
 }
