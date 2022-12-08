@@ -1,0 +1,23 @@
+{% extends 'global/base.html' %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    <div class="main-content center container">
+        <h2>Login</h2>
+        {% if request.user.is_authenticated %}
+            <div class="loggin-text">
+                You are logged in {{ request.user.username }}. Please,
+                <form class="inline-form" action="{% url 'authors:logout' %}" method='POST'>
+                    {% csrf_token %}
+                    <input type="hidden" name="username" value="{{ request.user.username }}">
+                    <button class="plaintext-button" type="submit">click here</button>
+                </form>to logout.
+            </div>
+        {% endif %}
+    </div>
+    <div class="main-content container">
+        
+        {% include 'global/partials/messages.html' %}
+        {% include 'global/partials/form.html' %}
+    </div>
+{% endblock content %}

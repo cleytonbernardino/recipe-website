@@ -1,6 +1,7 @@
 {
     "python.testing.pytestArgs": [
-        "recipes"
+        "recipes",
+        "authors",
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
