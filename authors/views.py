@@ -47,11 +47,12 @@ def login_view(request):
 
 
 def login_create(request):
-    if not request.POST:
+    POST = request.POST
+    if not POST:
         messages.error(request, 'invalid credentials')
-        return Http404()
+        raise Http404()
 
-    form = LoginForm()
+    form = LoginForm(POST)
 
     if form.is_valid():
         authenticated_user = authenticate(

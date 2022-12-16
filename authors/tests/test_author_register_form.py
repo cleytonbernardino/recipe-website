@@ -143,8 +143,7 @@ class AuthorRegisterFormIntegrationTest(DjangoTestCase):
             'email': 'test@gmail.com',
             'password': 't3st!inG',
             'password2': 't3st!inG',
-        }
-        )
+        })
         self.make_response_post(self.form_data)
         is_authenticated = self.client.login(
             username='testUser',
@@ -152,3 +151,7 @@ class AuthorRegisterFormIntegrationTest(DjangoTestCase):
         )
 
         self.assertTrue(is_authenticated)
+
+    def test_sand_get_request_to_registration_create_view_returns_404(self):
+        response = self.client.get('authors:register_create')
+        self.assertEqual(404, response.status_code)
