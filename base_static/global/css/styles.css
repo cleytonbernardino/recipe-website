@@ -80,6 +80,10 @@ a {
     color: inherit;
 }
 
+img {
+    max-width: 100%;
+}
+
 /* Message */
 .messages-container{
     display: flex;
@@ -131,9 +135,38 @@ a {
     color: var(--color-debug-dark);
 }
 
+/* Authors */
+.authors-dashboard-container {
+    max-width: 64rem;
+    text-align: left;
+    padding: var(--spacing-gutter-medium);
+    margin: 0 auto;
+}
+
+.author-title {
+    position: relative;
+}
+
+
+
+.create-recipe-container {
+    background: var(--color-primary-dark);
+    color: white;
+    padding: 1rem;
+    border-radius: 2rem;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 /* Generic */
 .center {
     text-align: center;
+}
+
+.left {
+    text-align: left;
 }
 
 .container {
@@ -363,6 +396,10 @@ a {
 }
 
 /* FORMS */
+.main-form {
+    margin-top: 2rem;
+}
+
 .form-content {
     max-width: 64rem;
     margin: 0 auto;
@@ -393,6 +430,10 @@ a {
     list-style-type: none;
 }
 
+.span-2 {
+    grid-column: span 2;
+}
+
 .inline-form {
     display: inline;
 }
@@ -415,7 +456,9 @@ a {
     color: var(--color-error-dark);
 }
 
-.form-content input {
+.form-content input, 
+.form-content textarea, 
+.form-content select { 
     width: 100%;
     padding: 1rem;
     border-radius: .4rem;

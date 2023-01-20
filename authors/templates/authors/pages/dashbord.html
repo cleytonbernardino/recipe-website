@@ -1,0 +1,33 @@
+{% extends 'global/base.html' %}
+{% block title %}DashBord{% endblock title %}
+
+{% block content %}
+    <div class="main-content center container">
+        {% include 'global/partials/messages.html' %}
+        <h2>Dashbord ({{ user }})</h2>
+        {% include 'authors/partials/login-message.html' %}
+
+        <div class="authors-dashboard-container">
+            <div class="author-title">
+                <h3>Your recipes </h3>
+                <div class="create-recipe-container">
+                    <a class="buttom-add-recipe" href='{% url "authors:dashboard_recipe_new" %}'>+ Recipe</a>
+                </div>
+            </div>
+
+            <ul>
+                {% for recipe in recipes %}
+                    <a href="{% url 'authors:dashboard_recipe_edit' recipe.pk %}">{{ recipe.title }}</a>
+                {% empty %}
+                    <li>
+                        <p>You do not have recipes, please create one.</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="main-content container">
+
+
+    </div>
+{% endblock content %}
