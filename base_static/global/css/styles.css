@@ -137,17 +137,34 @@ img {
 
 /* Authors */
 .authors-dashboard-container {
-    max-width: 64rem;
+    /* max-width: 64rem;
     text-align: left;
     padding: var(--spacing-gutter-medium);
-    margin: 0 auto;
+    margin: 0 auto; */
+    margin-top: 2rem;
 }
 
 .author-title {
     position: relative;
+    margin-bottom: 2.5rem;
 }
 
+.recipe-edit-link {
+    margin-top: 1rem;
+    list-style: none;
+    /* position: relative; */
+}
 
+.delete-form {
+    display: none;
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+}
+
+.recipe:hover .delete-form {
+    display: block;
+}
 
 .create-recipe-container {
     background: var(--color-primary-dark);
@@ -443,9 +460,12 @@ img {
     background: none;
     border: none;
     font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.buttom-link {
     color: var(--color-primary);
     border-bottom: 0.1rem solid;
-    cursor: pointer;
 }
 
 .loggin-text {

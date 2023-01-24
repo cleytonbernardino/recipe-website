@@ -15,9 +15,11 @@
                 </div>
             </div>
 
-            <ul>
+            <ul class="main-content main-content-list container">
                 {% for recipe in recipes %}
-                    <a href="{% url 'authors:dashboard_recipe_edit' recipe.pk %}">{{ recipe.title }}</a>
+                    <li class="recipe-edit-link">
+                        {% include 'authors/partials/recipe-preview.html' %}
+                    </li>
                 {% empty %}
                     <li>
                         <p>You do not have recipes, please create one.</p>

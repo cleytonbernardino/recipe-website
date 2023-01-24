@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
 ROOT_PATH = Path(__file__).parent.parent
-CHROMEDRIVER_NAME = environ.get('CHROMEDRIVER_NAME', '')
+CHROMEDRIVER_NAME = 'chromedriver'
 CHROMEDRIVER_PATH = str(ROOT_PATH / 'bin' / CHROMEDRIVER_NAME)
 
 # --headless

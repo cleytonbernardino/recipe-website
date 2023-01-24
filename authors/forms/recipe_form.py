@@ -12,7 +12,7 @@ class AuthorRecipeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self._errors = defaultdict(list)
+        self._form_errors = defaultdict(list)
 
         add_new_attr(self.fields.get('preparation_steps'), 'class', 'span-2')
         add_new_attr(self.fields.get('category'), 'class', 'span-2')
@@ -37,8 +37,12 @@ class AuthorRecipeForm(forms.ModelForm):
                     ('Pessoas', 'Pessoas'),
                 )),
 
+            'servings': forms.NumberInput(
+                attrs={'min': 0},
+            ),
+
             'preparation_time': forms.NumberInput(
-                attrs={'min': 0}
+                attrs={'min': 0},
             ),
 
             'preparation_time_unit': forms.Select(
@@ -55,29 +59,30 @@ class AuthorRecipeForm(forms.ModelForm):
         title = cleanded_data.get('title')
         description = cleanded_data.get('description')
         preparation_time = cleanded_data.get('preparation_time')
-        servings_unit = cleanded_data.get('servings_unit')
+        servings = cleanded_data.get('servings')
 
         if len(title) < 8:
-            self._errors['title'].append('Title must at least 8 chars')
+            self._form_errors['title'].append('Title must at least 8 chars')
 
         if len(description) < 20:
-            self._errors['description'].append(
+            self._form_errors['description'].append(
                 'Description must at least 20 chars')
 
         if title == description:
-            self._errors['description'].append('Cannot be equal to title')
-            self._errors['title'].append('Cannot be equal to description')
+            self._form_errors['description'].append('Cannot be equal to title')
+            self._form_errors['title'].append('Cannot be equal to description')
 
         if is_positive_number(preparation_time):
-            self._errors[
+            self._form_errors[
                 'preparation_time'].append(
                 'Time cannot be less than 0'
             )
 
-        if is_positive_number(servings_unit):
-            self._errors['servings_unit'].append('Time cannot be less than 0')
+        if is_positive_number(servings):
+            self._form_errors['servings'].append(
+                'Time cannot be less than 0')
 
-        if self._errors:
-            raise ValidationError(self._errors)
+        if self._form_errors:
+            raise ValidationError(self._form_errors)
 
         return super_clean
