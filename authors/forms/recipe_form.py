@@ -58,6 +58,7 @@ class AuthorRecipeForm(forms.ModelForm):
 
         title = cleanded_data.get('title')
         description = cleanded_data.get('description')
+        preparation_steps = cleanded_data.get('preparation_steps')
         preparation_time = cleanded_data.get('preparation_time')
         servings = cleanded_data.get('servings')
 
@@ -67,6 +68,10 @@ class AuthorRecipeForm(forms.ModelForm):
         if len(description) < 20:
             self._form_errors['description'].append(
                 'Description must at least 20 chars')
+
+        if len(preparation_steps) < 60:
+            self._form_errors['preparation_steps'].append(
+                'Preparation steps must at least 60 chars')
 
         if title == description:
             self._form_errors['description'].append('Cannot be equal to title')
@@ -80,7 +85,7 @@ class AuthorRecipeForm(forms.ModelForm):
 
         if is_positive_number(servings):
             self._form_errors['servings'].append(
-                'Time cannot be less than 0')
+                'Servings cannot be less than 0')
 
         if self._form_errors:
             raise ValidationError(self._form_errors)

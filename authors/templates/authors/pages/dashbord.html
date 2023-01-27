@@ -14,6 +14,8 @@
                     <a class="buttom-add-recipe" href='{% url "authors:dashboard_recipe_new" %}'>+ Recipe</a>
                 </div>
             </div>
+            
+            {% include 'global/partials/confirmation_message.html' %}
 
             <ul class="main-content main-content-list container">
                 {% for recipe in recipes %}

@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.utils.text import slugify
 from django.views import View
 
 from authors.forms import AuthorRecipeForm
@@ -31,8 +32,8 @@ class DashboardRecipe(View):
                           'form': form,
                       })
 
-    def get(self, *args, **kwargs):
-        recipe = self.get_recipe(kwargs.get('id', None))
+    def get(self, request, id=None):
+        recipe = self.get_recipe(id)
 
         form = AuthorRecipeForm(
             instance=recipe,
@@ -55,6 +56,8 @@ class DashboardRecipe(View):
             recipe.author = self.request.user
             recipe.preparation_steps_is_html = False
             recipe.is_published = False
+            if recipe.slug == "":
+                recipe.slug = slugify(recipe.title)
 
             recipe.save()
             messages.success(
