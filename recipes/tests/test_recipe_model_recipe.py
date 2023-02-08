@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from parameterized import parameterized
+
 from recipes.models import Recipe
 
 from .test_recipe_base import RecipeTestBase
@@ -63,3 +64,9 @@ class RecipeModelTest(RecipeTestBase):
             msg=f'Recipe String representation must be "{needed}" but\
                 "{str(self.recipe)}"'
         )
+
+    def test_recipe_slug_is_created_when_be_empty(self):
+        self.recipe.slug = ''
+        self.recipe.save()
+
+        self.assertEqual('recipe-title', self.recipe.slug)

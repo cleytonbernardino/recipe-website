@@ -10,7 +10,7 @@
                 action="{% url 'authors:dashboard_recipe_delete' %}">
                 {% csrf_token %}
                 <input type="hidden" name="id" value="{{ recipe.id }}">
-                <button class="plaintext-button" type="submit">❌</button>
+                <a class="plaintext-button" onclick='deleteConfirmTest(this)'>❌</a>
             </form>
 
         </a>

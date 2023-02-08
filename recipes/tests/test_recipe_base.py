@@ -14,7 +14,11 @@ class RecipeMixin:
         username='joseAntonio',
         email='joseAntonio@gmail.com',
         password='123',
+        id=None,
     ):
+        if id:
+            return User.objects.get(pk=id)
+
         return User.objects.create_user(
             first_name=first_name,
             last_name=last_name,

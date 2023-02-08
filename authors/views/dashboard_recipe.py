@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -10,7 +10,9 @@ from authors.forms import AuthorRecipeForm
 from recipes.models import Recipe
 
 
-class DashboardRecipe(View):
+class DashboardRecipe(LoginRequiredMixin, View):
+    login_url = 'authors:login'
+    redirect_field_name = 'next'
 
     def get_recipe(self, id=None):
         recipe = None
@@ -67,3 +69,22 @@ class DashboardRecipe(View):
             }))
 
         return self.render_recipe(recipe, form)
+
+
+class DashboardRecipeDelete(DashboardRecipe):
+    def get(self, request):
+        raise Http404()
+
+    def post(self, request):
+        try:
+            recipe = Recipe.objects.get(
+                author=request.user,
+                is_published=False,
+                pk=request.POST['id']
+            )
+        except Recipe.DoesNotExist:
+            raise Http404()
+
+        recipe.delete()
+        messages.success(request, 'Delete successfully.')
+        return redirect('authors:dashboard')

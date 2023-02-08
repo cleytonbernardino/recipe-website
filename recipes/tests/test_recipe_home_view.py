@@ -11,7 +11,7 @@ class RecipeHomeViewTest(RecipeTestBase):
 
     def test_view_home(self):
         view = resolve('/')  # ou reverse("recipes:home")
-        self.assertIs(view.func, views.home)
+        self.assertIs(view.func.view_class, views.RecipeListViewBase)
 
     def test_view_home_status_code_200(self):
         response = self.client.get(reverse('recipes:home'))

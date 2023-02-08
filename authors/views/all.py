@@ -1,3 +1,5 @@
+from os import environ
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -7,6 +9,9 @@ from django.urls import reverse
 
 from authors.forms import LoginForm, RegisterForm
 from recipes.models import Recipe
+from utils.pagination import make_pagination
+
+PER_PAGE = int(environ.get('PER_PAGE', 6))
 
 
 def register_view(request):
@@ -75,32 +80,12 @@ def dashbord(request):
         author=request.user, is_published=False
     ).order_by('-pk')
 
+    page_obj, pagination_range = make_pagination(request, recipes, PER_PAGE)
+
     return render(request, 'authors/pages/dashbord.html', context={
-        'recipes': recipes,
+        'recipes': page_obj,
+        'pagination_range': pagination_range,
     })
-
-
-@login_required(login_url='authors:login', redirect_field_name='next')
-def dashboard_recipe_delete(request):
-    POST = request.POST
-
-    if not POST:
-        raise Http404()
-
-    try:
-        recipe = Recipe.objects.get(
-            is_published=False,
-            author=request.user,
-            pk=POST['id'],
-        )
-    except Recipe.DoesNotExist:
-        raise Http404()
-
-    recipe.delete()
-    messages.success(request, 'Delete successfully.')
-
-    return redirect(reverse('authors:dashboard'))
-
 
 @login_required(login_url='authors:login', redirect_field_name='next')
 def logout_view(request):

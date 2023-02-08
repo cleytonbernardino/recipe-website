@@ -3,11 +3,40 @@
 
 {% block content %}
 <div class="main-content center container">
-    <h2>You Recipe</h2>
+    <div class="title-container">
+        <div class="button-back" onclick='back()'><i class="fa-solid fa-circle-arrow-left"></i></div>
+        <h2>You Recipe</h2>
+    </div>
     {% include 'global/partials/messages.html' %}
     {% include 'authors/partials/login-message.html' %}
     <div class="left">
+        {% include 'global/partials/confirmation_message.html' %}
         {% include 'global/partials/form.html' %}
     </div>
 </div>
+<script>
+    (function () {
+        const body = document.body
+        const form = document.querySelector('.main-form')
+        const confirmBox = document.querySelector('.message-box')
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+    
+            body.classList.add('overflow-hidden')
+            confirmBox.classList.add('message-focus')
+            form.classList.add('message-focus-event')
+    
+            confirmBox.addEventListener('click', event => {
+                if (event.target.id === 'confirm-button-yes') {
+                    form.submit()
+                } else if (event.target.id === 'confirm-button-no') {
+                    body.classList.remove('overflow-hidden')
+                    confirmBox.classList.remove('message-focus')
+                    form.classList.remove('message-focus-event')
+                }
+            })
+        })
+    })()
+</script>
 {% endblock content %}

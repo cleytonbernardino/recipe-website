@@ -22,7 +22,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
                 text for complete the 50 chars',
             'cover': "C:\\Users\\cleytonbj\\Pictures\\Screenshots\\Captura.png",  # noqa: E501
         }
-        return super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def fill_form_dummy_data(self, form, value=' ' * 20):
 
@@ -124,13 +124,14 @@ class AuthorsRegisterTest(AuthorsBaseTest):
         ('preparation_steps', 60, 'Preparation steps must at least 60 chars'),
     ])
     def test_min_length_title_field(self, field, min_length, error_msg):
+        self.make_login()
         # Usuário abre na pagina de nova receita
         self.browser.get(
             self.live_server_url + reverse('authors:dashboard_recipe_new'))
 
         # Usuário vê o formulario e preenche ele de forma incorreta
         form = self.browser.find_element(
-            By.XPATH, '/html/body/main/div/div/form')
+            By.XPATH, '/html/body/main/div/div[3]/form[2]')
         self.form_data[field] = 's' * (min_length - 1)
 
         for fi, value in self.form_data.items():
@@ -139,6 +140,9 @@ class AuthorsRegisterTest(AuthorsBaseTest):
 
         # Usuário envia o formulário
         form.submit()
+
+        # Usuário confirma o envio do formulário
+        self.browser.find_element(By.ID, 'confirm-button-yes').click()
 
         # Usuário vê o erro em sua tela
         self.assertIn(error_msg,
@@ -151,7 +155,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
             self.live_server_url + reverse('authors:dashboard_recipe_new'))
 
         form = self.browser.find_element(
-            By.XPATH, '/html/body/main/div/div[2]/form')
+            By.XPATH, '/html/body/main/div/div[3]/form[2]')
 
         self.form_data['title'] = 'title is the same as description'
         self.form_data['description'] = 'title is the same as description'
@@ -160,6 +164,10 @@ class AuthorsRegisterTest(AuthorsBaseTest):
             input_field = form.find_element(By.NAME, field)
             input_field.send_keys(value)
         form.submit()
+
+        # Usuário confirma o envio do formulário
+        self.browser.find_element(By.ID, 'confirm-button-yes').click()
+
         self.assertIn('Cannot be equal to',
                       self.browser.find_element(By.TAG_NAME, 'body').text)
 
@@ -171,7 +179,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
             self.live_server_url + reverse('authors:dashboard_recipe_new'))
 
         form = self.browser.find_element(
-            By.XPATH, '/html/body/main/div/div[2]/form')
+            By.XPATH, '/html/body/main/div/div[3]/form[2]')
 
         self.form_data['preparation_time'] = '-1'
         self.form_data['servings'] = '-3y'
@@ -180,6 +188,9 @@ class AuthorsRegisterTest(AuthorsBaseTest):
             input_field = form.find_element(By.NAME, field)
             input_field.send_keys(value)
         form.submit()
+
+        # Usuário confirma o envio do formulário
+        self.browser.find_element(By.ID, 'confirm-button-yes').click()
 
         self.assertIn('cannot be less than 0',
                       self.browser.find_element(By.TAG_NAME, 'body').text)
@@ -190,12 +201,15 @@ class AuthorsRegisterTest(AuthorsBaseTest):
             self.live_server_url + reverse('authors:dashboard_recipe_new'))
 
         form = self.browser.find_element(
-            By.XPATH, '/html/body/main/div/div[2]/form')
+            By.XPATH, '/html/body/main/div/div[3]/form[2]')
 
         for field, value in self.form_data.items():
             input_field = form.find_element(By.NAME, field)
             input_field.send_keys(value)
-
         form.submit()
+
+        # Usuário confirma o envio do formulário
+        self.browser.find_element(By.ID, 'confirm-button-yes').click()
+
         self.assertIn("Your recipe has been successfully saved!",
                       self.browser.find_element(By.TAG_NAME, 'body').text)

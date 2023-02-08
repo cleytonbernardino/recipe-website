@@ -15,22 +15,29 @@ function deleteConfirm() {
   
 }
 
-function deleteConfirmTest() {
-    const body = document.querySelector('body')
-    const delButtom = document.getElementsByClassName('plaintext-button')[0]
-    const form = document.getElementsByClassName('message-box')[0]
- 
-    body.addEventListener('click', e => {
-        e.preventDefault();
-        console.log(e.target.classList.contains('yes'))
-        form.addEventListener('click', event => {
-
-        if (e.target.classList.contains('yes')) {
-            console.log('TRues')
-        }
-        })
-    })
+function deleteConfirmTest(element) {
+    const body = document.body
+    const mainList = document.querySelector('.main-content-list')
+    const form = element.parentNode
+    const confirmBox = document.querySelector('.message-box')
     
+    
+    body.classList.add('overflow-hidden')
+    mainList.classList.add('message-focus-event')
+    confirmBox.classList.add('message-focus')
+    
+    confirmBox.addEventListener('click', e => {
+        if (e.target.id === 'confirm-button-yes') {
+            form.submit()
+        } else if (e.target.id === 'confirm-button-no') {
+            body.classList.remove('overflow-hidden')
+            mainList.classList.remove('message-focus-event')
+            confirmBox.classList.remove('message-focus')
+        }
+    })
+
 }
 
-deleteConfirmTest()
+function back() {
+    window.history.back();
+}
