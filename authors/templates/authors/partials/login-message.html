@@ -4,7 +4,7 @@
         <form class="inline-form" action="{% url 'authors:logout' %}" method='POST'>
             {% csrf_token %}
             <input type="hidden" name="username" value="{{ request.user.username }}">
-            <button class="plaintext-button buttom-link" type="submit">click here</button>
+            <button class="plaintext-button buttom-link" type="submit"><i class="fa-solid fa-right-from-bracket"></i> click here</button>
         </form>to logout.
     </div>
 {% endif %}

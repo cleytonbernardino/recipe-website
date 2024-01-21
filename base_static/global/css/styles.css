@@ -202,10 +202,6 @@ img {
     overflow: hidden;
 }
 
-.main-header-container {
-    background: var(--color-primary-dark);
-}
-
 .main-logo {
     font-size: 4rem;
     color: var(--color-white);
@@ -266,6 +262,38 @@ img {
     color: var(--color-primary);
     border-color: var(--color-primary);
 }
+/* Heade */
+
+.main-header-container {
+    background: var(--color-primary-dark);
+}
+
+.main-header {
+    display: flex;
+}
+
+.main-header .header-content{
+    width: 100%;
+}
+
+/* Menu */
+
+.menu {
+    display: flex;
+    color: white;
+}
+
+.menu-content {
+    display: flex;
+}
+
+.menu-content a {
+    margin-right: 30px;
+}
+
+.menu-content a:hover {
+    color: var(--color-primary-hover);
+}
 /* BUTTONS */
 
 .button-back {
@@ -305,6 +333,10 @@ img {
 
 .recipe img {
     max-width: 100%;
+}
+
+.recipe-cover img {
+    width: 100%;
 }
 
 .recipe-list-item {

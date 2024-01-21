@@ -9,7 +9,7 @@ class RecipeDetailViewTest(RecipeTestBase):
 
     def test_function_view_recipe(self):
         view = resolve(reverse('recipes:recipe', kwargs={'pk': 1}))
-        self.assertIs(view.func.view_class, views.RecipeDetailViewRecipe)
+        self.assertIs(view.func.view_class, views.RecipeDetail)
 
     def test_view_recipe_detail_status_code_404_if_no_recipes_found(self):
         response = self.client.get(
