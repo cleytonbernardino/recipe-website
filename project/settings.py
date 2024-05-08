@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = environ.get('SECRET_KEY', 'INSECURE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if environ.get('DEBUG') == '1' else False
+DEBUG = True if environ.get('DEBUG', '1') == '1' else False
 
 ALLOWED_HOSTS = []  # type: ignore
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recipes',
     'authors',
+    'tag',
 ]
 
 MIDDLEWARE = [

@@ -371,12 +371,12 @@ img {
 }
 
 .recipe-author-item a {
-    color: var(--color-primary-dark);
+    color: var(--color-primary);
     transition: all 300ms ease-in-out;
 }
 
 .recipe-author-item a:hover {
-    color: var(--color-primary)
+    color: var(--color-primary-hover);
 }
 
 .recipe-meta-container {
@@ -469,6 +469,16 @@ img {
 .pagination .current-page {
     background: var(--color-primary-dark);
 }
+
+/* TAGS */
+.tag-link {
+    color: var(--color-primary);
+}
+
+.tag-link:hover {
+    color: var(--color-info-dark);
+}
+
 
 /* FORMS */
 .main-form {
