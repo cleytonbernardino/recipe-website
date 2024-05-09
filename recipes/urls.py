@@ -29,10 +29,5 @@ urlpatterns = [
         'recipes/<int:pk>/',
         views.RecipeDetail.as_view(),
         name='recipe',
-    ),
-    path(
-        'recipes/api/<int:pk>/',
-        views.RecipeDetailApi.as_view(),
-        name='recipe_api_v1',
     )
 ]

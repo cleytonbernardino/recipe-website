@@ -20,7 +20,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
             'servings_unit': 'Pessoas',
             'preparation_steps': 'Preparation steps for recipe the test \
                 text for complete the 50 chars',
-            'cover': "C:\\Users\\cleytonbj\\Pictures\\Screenshots\\Captura.png",  # noqa: E501
+            'cover': "/home/cleyton/Pictures/Screenshots/Captura.png",  # noqa: E501
         }
         super().__init__(*args, **kwargs)
 

@@ -4,7 +4,7 @@
 {% block content %}
 <div class="main-content center container">
     <div class="title-container">
-        <div class="button-back" onclick='back()'><i class="fa-solid fa-circle-arrow-left"></i></div>
+        <div class="button-back" onclick="back('{% url 'authors:dashboard' %}')"><i class="fa-solid fa-circle-arrow-left"></i></div>
         <h2>You Recipe</h2>
     </div>
     {% include 'global/partials/messages.html' %}

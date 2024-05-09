@@ -41,3 +41,7 @@ function deleteConfirmTest(element) {
 function back() {
     window.history.back();
 }
+
+function back(url){
+    window.location.replace(url)
+}

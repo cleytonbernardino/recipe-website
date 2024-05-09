@@ -56,11 +56,11 @@ class AuthorRecipeForm(forms.ModelForm):
         super_clean = super().clean(*args, **kwargs)
         cleanded_data = self.cleaned_data
 
-        title = cleanded_data.get('title')
-        description = cleanded_data.get('description')
-        preparation_steps = cleanded_data.get('preparation_steps')
+        title = cleanded_data.get('title', '')
+        description = cleanded_data.get('description', '')
+        preparation_steps = cleanded_data.get('preparation_steps', '')
         preparation_time = cleanded_data.get('preparation_time')
-        servings = cleanded_data.get('servings')
+        servings = cleanded_data.get('servings', '')
 
         if len(title) < 8:
             self._form_errors['title'].append('Title must at least 8 chars')
