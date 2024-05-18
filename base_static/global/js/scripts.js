@@ -1,27 +1,11 @@
-function deleteConfirm() {
-    const forms = document.querySelectorAll('.form-delete');
-
-    for (const form of forms) {
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-
-            const confirmed = confirm('Are you sure:')
-
-            if (confirmed) {
-                form.submit();
-            }
-        })
-    }
-  
-}
-
-function deleteConfirmTest(element) {
+function deleteConfirm(element) {
     const body = document.body
     const mainList = document.querySelector('.main-content-list')
     const form = element.parentNode
     const confirmBox = document.querySelector('.message-box')
     
-    
+    console.log('sdsad')
+
     body.classList.add('overflow-hidden')
     mainList.classList.add('message-focus-event')
     confirmBox.classList.add('message-focus')
@@ -36,10 +20,6 @@ function deleteConfirmTest(element) {
         }
     })
 
-}
-
-function back() {
-    window.history.back();
 }
 
 function back(url){

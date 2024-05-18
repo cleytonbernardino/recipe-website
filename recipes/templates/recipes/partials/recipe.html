@@ -1,7 +1,11 @@
 <div class="recipe recipe-list-item">
     <div class="recipe-cover">
         <a href="{% url 'recipes:recipe' recipe.id %}">
-            <img src="{{ recipe.cover.url }}" alt="Uma Imagem vazia ">
+            {% if recipe.cover.url is not None %}
+                <img src="{{ recipe.cover.url }}" alt="Uma Imagem vazia ">
+            {% else %}
+                <img src="media\missionImage.jpg" alt="Uma Imagem vazia ">
+            {% endif %}
         </a>
         <div class="recipe-title-container">
             <h2 class="recipe-title">
@@ -21,7 +25,7 @@
                         {{ recipe.author.username }}
                     {% endif %}
                 {% else %}
-                    DESCONHECIDO
+                    UNKNOWN
                 {% endif %}
             </span>
             <span class="recipe-author-item"> <!--DATA-->
@@ -59,7 +63,7 @@
             <footer class="recipe-footer">
                 <a href="{{ recipe.get_absolute_url }}" class="recipe-read-more button-dark button-full-width">
                     <i class="fas fa-eye"></i>
-                    <span>Ver mais...</span>
+                    <span>See More...</span>
                 </a>
             </footer>
         {% endif %} 

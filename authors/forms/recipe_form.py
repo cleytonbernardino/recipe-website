@@ -17,12 +17,15 @@ class AuthorRecipeForm(forms.ModelForm):
         add_new_attr(self.fields.get('preparation_steps'), 'class', 'span-2')
         add_new_attr(self.fields.get('category'), 'class', 'span-2')
 
+        # Colocar uma barra de pesquisa junto, ou fazer um duplo seletor
+        add_new_attr(self.fields.get('tags'), 'class', 'span-2')
+
     class Meta:
         model = Recipe
         fields = [
             'title', 'description', 'preparation_time',
             'preparation_time_unit', 'servings', 'servings_unit',
-            'preparation_steps', 'cover', 'category'
+            'preparation_steps', 'cover', 'category', 'tags'
         ]
 
         widgets = {
