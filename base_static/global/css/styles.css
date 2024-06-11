@@ -308,6 +308,7 @@ img {
     min-height: 100vh;
     overflow-y: auto;
     background: var(--color-primary);
+    transition: all 300ms ease-in-out;
     z-index: 2;
 }
 
@@ -344,13 +345,36 @@ img {
     font-size: 2rem;
 }
 
-.menu-nav a {
+.menu-nav a,
+.menu-nav form a{
     width: 100%;
     padding: 1rem;
+    cursor: pointer;
 }
 
-.menu-hidden {
+.menu-container-hidden {
     left: -25.3rem;
+}
+
+.button-show-menu {
+    position: fixed;
+    top: 2rem;
+    left: .5rem;
+    cursor: pointer;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    border: none;
+    font-size: 2rem;
+    z-index: 3;
+    visibility: hidden;
+    /* transition: visibility 5s ease-in-out; */
+    padding: 1rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.show-menu-button-visible {
+    visibility: visible;
+    left: .5rem;
 }
 
 /* BUTTONS */
@@ -589,6 +613,10 @@ img {
 
 .inline-form {
     display: inline;
+}
+
+.flex-form {
+    display: flex;
 }
 
 .plaintext-button {

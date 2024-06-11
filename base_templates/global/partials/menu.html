@@ -1,9 +1,9 @@
-<button button class="button-show-menu menu-visible" alt="Show Menu">
+<button button class="button-show-menu show-menu-button-visible" alt="Show Menu">
     <span class="display-none">Show Menu</span>
     <i class="fas fa-bars"></i>
 </button>
 
-<div class="menu-container menu-hidden">
+<div class="menu-container menu-container-hidden">
     <button button class="button-menu-close">
         <i class="fas fa-times-circle"></i>
         <span class="display-none">Close Menu</span>
@@ -13,7 +13,11 @@
         <a href="{% url "recipes:home" %}">Home</a>
         {% if user.is_authenticated %}
             <a href="{% url "authors:dashboard" %}">Dashboard</a>
-            <a href="{% url "authors:logout" %}">Logout</a>
+            <form class="flex-form logout-form" action="{% url 'authors:logout' %}" method='POST'>
+                {% csrf_token %}
+                <input type="hidden" name="username" value="{{ request.user.username }}">
+                <a class="loggout-button">Logout</a>
+            </form>
         {% else %}
             <a href="{% url "authors:login" %}">Login</a>
             <a href="{% url "authors:register" %}">Register</a>
