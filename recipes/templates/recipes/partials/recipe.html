@@ -17,16 +17,18 @@
     
         <div class="recipe-author">
             <span class="recipe-author-item"><!--AUTOR-->
-                <i class="fas fa-user"></i>
-                {% if recipe.author is not None %}
-                    {% if recipe.author.first_name %}
-                        {{ recipe.author.first_name }} {{ recipe.author.last_name }}
+                <a href="{% url "authors:profile_detail" recipe.author.profile.id %}">
+                    <i class="fas fa-user"></i>
+                    {% if recipe.author is not None %}
+                        {% if recipe.author.first_name %}
+                            {{ recipe.author.first_name }} {{ recipe.author.last_name }}
+                        {% else %}
+                            {{ recipe.author.username }}
+                        {% endif %}
                     {% else %}
-                        {{ recipe.author.username }}
+                        UNKNOWN
                     {% endif %}
-                {% else %}
-                    UNKNOWN
-                {% endif %}
+                </a>
             </span>
             <span class="recipe-author-item"> <!--DATA-->
                 <i class="fas fa-calendar-alt"></i>
