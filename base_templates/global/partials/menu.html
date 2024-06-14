@@ -13,7 +13,7 @@
         <a href="{% url "recipes:home" %}">Home</a>
         {% if user.is_authenticated %}
             <a href="{% url "authors:dashboard" %}">Dashboard</a>
-            <form class="flex-form logout-form" action="{% url 'authors:logout' %}" method='POST'>
+            <form class="logout-form" action="{% url 'authors:logout' %}" method='POST'>
                 {% csrf_token %}
                 <input type="hidden" name="username" value="{{ request.user.username }}">
                 <a class="loggout-button">Logout</a>

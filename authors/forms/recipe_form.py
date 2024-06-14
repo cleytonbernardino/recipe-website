@@ -3,6 +3,7 @@ from collections import defaultdict
 from django import forms
 from django.core.exceptions import ValidationError
 
+from project.settings import BASE_DIR
 from recipes.models import Recipe
 from utils.django_forms import add_new_attr
 from utils.string import is_positive_number
@@ -64,6 +65,7 @@ class AuthorRecipeForm(forms.ModelForm):
         preparation_steps = cleanded_data.get('preparation_steps', '')
         preparation_time = cleanded_data.get('preparation_time')
         servings = cleanded_data.get('servings', '')
+        cover = cleanded_data.get('cover')
 
         if len(title) < 8:
             self._form_errors['title'].append('Title must at least 8 chars')
@@ -89,6 +91,9 @@ class AuthorRecipeForm(forms.ModelForm):
         if is_positive_number(servings):
             self._form_errors['servings'].append(
                 'Servings cannot be less than 0')
+
+        if cover is None:
+            self.cleaned_data['cover'] = f'{BASE_DIR}/media/missionImage.jpg'
 
         if self._form_errors:
             raise ValidationError(self._form_errors)

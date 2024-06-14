@@ -282,99 +282,37 @@ img {
 
 /* Menu */
 
-/* .menu {
-    display: flex;
-    color: white;
-}
-
-.menu-content {
-    display: flex;
-}
-
-.menu-content a {
-    margin-right: 30px;
-}
-
-.menu-content a:hover {
-    color: var(--color-primary-hover);
-} */
-
-.menu-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 26rem;
-    min-height: 100vh;
-    overflow-y: auto;
-    background: var(--color-primary);
-    transition: all 300ms ease-in-out;
-    z-index: 2;
-}
-
-.menu-container a {
-    color: var(--color-white);
-    transition: color 1s cubic-bezier(0, 1.01, 0.58, 1);
-}
-
-.menu-container a:hover {
-    color: black
+.button-show-menu {
+    visibility: hidden;
 }
 
 .button-menu-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    color: rgba(255, 0, 0, 0.808);
-    background: None;
-    border: None;
-    font-size: 2rem;
-    z-index: 3;
-    cursor: pointer;
+    visibility: hidden;
 }
 
-.button-menu-close:hover {
-    color: rgba(255, 0, 0);
-    transform: scale(1.3, 1.3);
+.menu-container {
+    display: flex;
+    flex-flow: row wrap;
+    color: var(--color-white);
 }
 
 .menu-nav {
-    display: flex;
-    flex-flow: column wrap;
-    font-family: var(--font-headings);
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
-.menu-nav a,
-.menu-nav form a{
-    width: 100%;
-    padding: 1rem;
+.menu-nav * {
+    margin-right: 1rem;
+}
+
+.menu-nav *:hover {
+    color: var(--color-primary-hover);
+}
+
+/* LOGOUT FORM */
+
+.logout-form {
+    display: inline;
     cursor: pointer;
-}
-
-.menu-container-hidden {
-    left: -25.3rem;
-}
-
-.button-show-menu {
-    position: fixed;
-    top: 2rem;
-    left: .5rem;
-    cursor: pointer;
-    color: var(--color-white);
-    background-color: var(--color-primary);
-    border: none;
-    font-size: 2rem;
-    z-index: 3;
-    visibility: hidden;
-    /* transition: visibility 5s ease-in-out; */
-    padding: 1rem;
-    border-radius: 0 4px 4px 0;
-}
-
-.show-menu-button-visible {
-    visibility: visible;
-    left: .5rem;
 }
 
 /* BUTTONS */
@@ -615,10 +553,6 @@ img {
     display: inline;
 }
 
-.flex-form {
-    display: flex;
-}
-
 .plaintext-button {
     display: inline;
     background: none;
@@ -706,11 +640,4 @@ img {
 .message-focus-event {
     opacity: 60%;
     pointer-events: none;
-}
-
-@media (max-width: 600px) {
-    .main-content-list,
-    .form-content-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-    }
 }
