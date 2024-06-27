@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-19 23:46-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\authors\templates\authors\pages\profile.html:4
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\base_templates\global\partials\menu.html:4
+msgid "Show Menu"
+msgstr "Mostrar Menu"
+
+#: .\base_templates\global\partials\menu.html:11
+msgid "Close Menu"
+msgstr "Fechar Menu"
+
+#: .\base_templates\global\partials\menu.html:15
+msgid "Home"
+msgstr "Início"
+
+#: .\base_templates\global\partials\menu.html:17
+msgid "Dashboard"
+msgstr "Painel"
+
+#: .\base_templates\global\partials\menu.html:18
+msgid "My Profile"
+msgstr "Meu perfil"
+
+#: .\base_templates\global\partials\menu.html:22
+msgid "Logout"
+msgstr "Sair"
+
+#: .\base_templates\global\partials\menu.html:25
+msgid "Login"
+msgstr "Entrar"
+
+#: .\base_templates\global\partials\menu.html:26
+msgid "Register"
+msgstr "Registrar"
+
+#: .\recipes\models.py:15 .\recipes\models.py:47 .\recipes\views.py:67
+msgid "Category"
+msgstr "Categoria"
+
+#: .\recipes\models.py:16
+#, fuzzy
+#| msgid "Category"
+msgid "Categorys"
+msgstr "Categorias"
+
+#: .\recipes\models.py:18
+msgid "Name"
+msgstr "Nome"
+
+#: .\recipes\models.py:26
+msgid "Recipe"
+msgstr "Receita"
+
+#: .\recipes\models.py:27
+msgid "Recipes"
+msgstr "Receitas"
+
+#: .\recipes\models.py:29
+msgid "Title"
+msgstr "Título"
+
+#: .\recipes\models.py:30
+msgid "Description"
+msgstr "Descrição"
+
+#: .\recipes\models.py:32
+msgid "Preparation Time"
+msgstr "Tempo de Preparação"
+
+#: .\recipes\models.py:33
+msgid "Preparation Unit"
+msgstr "Unidade do Tempo de Preparação"
+
+#: .\recipes\models.py:34
+msgid "Servings"
+msgstr "Porções"
+
+#: .\recipes\models.py:35
+#, fuzzy
+#| msgid "Servings"
+msgid "Servings Unit"
+msgstr "Unidade de Porções"
+
+#: .\recipes\models.py:36
+msgid "Preparation_steps"
+msgstr "Etapas de Preparação"
+
+#: .\recipes\models.py:37
+msgid "Preparation steps is html"
+msgstr "Etapas de Preparação é HTML"
+
+#: .\recipes\models.py:38
+msgid "Created at"
+msgstr "Crianda em"
+
+#: .\recipes\models.py:39
+msgid "Updated at"
+msgstr "Atualizada em"
+
+#: .\recipes\models.py:40
+msgid "is published"
+msgstr "Está publicada"
+
+#: .\recipes\models.py:43
+msgid "Cover"
+msgstr ""
+
+#: .\recipes\models.py:50
+msgid "Author"
+msgstr "Autor(a)"
+
+#: .\recipes\models.py:53
+msgid "Tags"
+msgstr "Tags"
+
+#: .\recipes\templates\recipes\partials\recipe.html:31
+msgid "UNKNOWN"
+msgstr "Deconhecido(a)"
+
+#: .\recipes\templates\recipes\partials\recipe.html:70
+msgid "Read More"
+msgstr "Ler Mais"

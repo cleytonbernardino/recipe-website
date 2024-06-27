@@ -206,6 +206,10 @@ img {
     display: none;
 }
 
+.margin-top-1 {
+    margin-top: 1rem;
+}
+
 .main-logo {
     font-size: 4rem;
     color: var(--color-white);
@@ -640,4 +644,51 @@ img {
 .message-focus-event {
     opacity: 60%;
     pointer-events: none;
+}
+
+/* PROFILE */
+.profile-container {
+    max-width: 90vw;
+    position: relative;
+    left: 10rem;
+}
+
+.profile-content {
+    border: solid 2px var(--color-black);
+    border-radius: 3px;
+}
+
+.profile-portail {
+    position: relative;
+    min-height: 40rem;
+}
+
+.profile-image-container {
+    overflow: hidden;
+    width: 25rem;
+    border-radius: 60px;
+    position: absolute;
+    top: 0;
+    left: 30rem;
+}
+
+
+
+
+
+
+
+/* BOTÃO FODA PARA SER USADO */
+
+#choice-button {
+    margin-top: .5rem;;
+    padding: 1rem;
+    border: solid 2px var(--color-primary-dark);
+    border-radius: 10px;
+    background: none;
+}
+
+#choice-button:hover {
+    border-color: var(--color-primary-hover);
+    background: var(--color-gray-3);
 }

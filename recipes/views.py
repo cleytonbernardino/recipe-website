@@ -2,6 +2,8 @@ from os import environ
 
 from django.db.models import Q
 from django.http import Http404
+from django.utils.translation import get_language
+from django.utils.translation import gettext as _
 from django.views.generic import DetailView, ListView
 
 from tag.models import Tag
@@ -34,11 +36,14 @@ class RecipeListViewBase(ListView):
             ctx.get('recipes'),
             PER_PAGE
         )
+        html_language = get_language()
         ctx.update({
             'recipes': page_obj,
             'pagination_range': page_range,
             'search_term': '',
-            'additional_url_query': ''})
+            'additional_url_query': '',
+            'html_language': html_language,
+        })
 
         return ctx
 
@@ -59,7 +64,12 @@ class RecipeListViewCategory(RecipeListViewBase):
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
-        ctx.update({'title': f'{ctx["recipes"][0].category.name} - Category'})
+        category_translation = _('Category')
+
+        ctx.update({
+                'title': f'{category_translation} - '
+                f'{ctx["recipes"][0].category.name}',
+            })
         return ctx
 
 

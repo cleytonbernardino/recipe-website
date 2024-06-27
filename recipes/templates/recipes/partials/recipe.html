@@ -1,10 +1,12 @@
+{% load i18n %}
+
 <div class="recipe recipe-list-item">
     <div class="recipe-cover">
         <a href="{% url 'recipes:recipe' recipe.id %}">
             {% if recipe.cover.url is not None %}
                 <img src="{{ recipe.cover.url }}" alt="Uma Imagem vazia ">
             {% else %}
-                <img src="media\missionImage.jpg" alt="Uma Imagem vazia ">
+                <img src="/media/missionImage.jpg" alt="Uma Imagem vazia ">
             {% endif %}
         </a>
         <div class="recipe-title-container">
@@ -26,7 +28,7 @@
                             {{ recipe.author.username }}
                         {% endif %}
                     {% else %}
-                        UNKNOWN
+                        {% translate "UNKNOWN" %}
                     {% endif %}
                 </a>
             </span>
@@ -65,7 +67,7 @@
             <footer class="recipe-footer">
                 <a href="{{ recipe.get_absolute_url }}" class="recipe-read-more button-dark button-full-width">
                     <i class="fas fa-eye"></i>
-                    <span>See More...</span>
+                    <span>{% translate "Read More" %}...</span>
                 </a>
             </footer>
         {% endif %} 

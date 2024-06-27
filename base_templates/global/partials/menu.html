@@ -1,27 +1,29 @@
+{% load i18n %}
+
 <button button class="button-show-menu show-menu-button-visible" alt="Show Menu">
-    <span class="display-none">Show Menu</span>
+    <span class="display-none">{% translate "Show Menu" %}</span>
     <i class="fas fa-bars"></i>
 </button>
 
 <div class="menu-container menu-container-hidden">
     <button button class="button-menu-close">
         <i class="fas fa-times-circle"></i>
-        <span class="display-none">Close Menu</span>
+        <span class="display-none">{% translate "Close Menu" %}</span>
     </button>
     <div class="menu-content">
         <nav class="menu-nav">
-        <a href="{% url "recipes:home" %}">Home</a>
+        <a href="{% url "recipes:home" %}">{% translate "Home" %}</a>
         {% if user.is_authenticated %}
-            <a href="{% url "authors:dashboard" %}">Dashboard</a>
-            <a href="{% url "authors:profile_detail" user.id %}">My Profile</a>
+            <a href="{% url "authors:dashboard" %}">{% translate "Dashboard" %}</a>
+            <a href="{% url "authors:profile_detail" user.id %}">{% translate "My Profile" %}</a>
             <form class="logout-form" action="{% url 'authors:logout' %}" method='POST'>
                 {% csrf_token %}
                 <input type="hidden" name="username" value="{{ request.user.username }}">
-                <a class="loggout-button">Logout</a>
+                <a class="loggout-button">{% translate "Logout" %}</a>
             </form>
         {% else %}
-            <a href="{% url "authors:login" %}">Login</a>
-            <a href="{% url "authors:register" %}">Register</a>
+            <a href="{% url "authors:login" %}">{% translate "Login" %}</a>
+            <a href="{% url "authors:register" %}">{% translate "Register" %}</a>
         {% endif %}
         </nav>
     </div>

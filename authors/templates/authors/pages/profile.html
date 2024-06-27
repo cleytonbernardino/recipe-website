@@ -1,11 +1,23 @@
 {% extends 'global/base.html' %}
-{% block title %}Profile{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% translate "Profile" %}{% endblock title %}
 
 {% block content %}
-    <div class="main-content center container">
-        <h2>{{ profile.author.username }}</h2>
-        <p>{{ profile.bio }}</p>
-    </div>
-    <div class="main-content container">
+    <div class="main-content center profile-container">
+        <div class="profile-content">
+            <div class="profile-portail">
+                <h2>{{ profile.author.username }}</h2>
+                <p>{{ profile.bio }}</p>
+                <div class="profile-image-container">
+                    <img src="/media/missionImage.jpg" alt="Profile Picture"  class="margin-top-1">
+                </div>
+            </div>
+            <div class="profile-recipes main-content main-content-list container">
+                {% for recipe in recipes %}
+                    {% include "recipes/partials/recipe.html" %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock content %}
