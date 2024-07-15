@@ -48,6 +48,79 @@ function deleteConfirm(element) {
 
 }
 
-function back(url){
+function back(url) {
     window.location.replace(url)
+}
+
+function charCount(element) {
+    const bioArea = element
+    const charCount = document.querySelector("#current-char")
+
+    const maxLength = bioArea.getAttribute("max-length")
+    const remainingChars = maxLength - bioArea.value.length
+
+    if (remainingChars <= 0) {
+        bioArea.value = bioArea.value.substr(0, maxLength)
+    }
+    charCount.textContent = `${remainingChars}/${maxLength}`
+}
+
+function functinText(element) {
+    const form = element.parentElement
+    const bioText = document.querySelector("#text-bio")
+    const button = document.querySelector(".profile-button")
+    const remainingChars = document.querySelector('#current-char')
+
+    form.addEventListener("submit", e => {
+        e.preventDefault()
+
+        if (!bioText.classList.contains('show-bio')) {
+            form.submit()
+            return
+        }
+
+        bioText.classList.remove("show-bio")
+        bioText.removeAttribute("readonly")
+        bioText.focus()
+        bioText.setSelectionRange(bioText.value.length, bioText.value.length)
+
+        remainingChars.classList.remove("hidden")
+        charCount(bioText)
+        button.innerHTML = '<i class="fa-solid fa-pencil"></i>  Send'
+    })
+}
+
+function isCurrentType(fileInput, acceptTypes=['image/png', 'image/jpeg']) {
+    const currentFile = fileInput.files
+    if (currentFile.length === 0) {
+        return false
+    }
+
+    if (acceptTypes.includes(currentFile[0].type)) {
+        return true
+    }
+}
+
+function chooseFile() {
+    // This function requires an element with id fileInput to act
+
+    const fileInput = document.getElementsByName('profile-image-input')[0]
+    const imagePortail = document.querySelector('#author-image')
+    const saveButton = document.querySelector('.save-image-button')
+
+    let tempURL
+
+    fileInput.click()
+
+    fileInput.addEventListener("change", () => {
+       if (!isCurrentType(fileInput)) {
+            return
+       }
+
+       imagePortail.setAttribute('style', 'border-radius:none;')
+       saveButton.classList.remove('hidden')
+
+       tempURL = URL.createObjectURL(fileInput.files[0])
+       imagePortail.setAttribute('src', tempURL)
+    }, {once: true})
 }

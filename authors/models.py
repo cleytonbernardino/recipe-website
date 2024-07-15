@@ -8,7 +8,7 @@ class Profile(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(default='', blank=True)
     profile_picture = models.ImageField(
-        upload_to='auhtors/pictures/%Y/%m/%d/', null=True, blank=True
+        upload_to='authors/pictures/%Y/%m/%d/', null=True, blank=True
     )
 
     def __str__(self):

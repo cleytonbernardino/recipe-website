@@ -198,6 +198,10 @@ img {
     padding: var(--spacing-gutter-small)
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .overflow-hidden {
     overflow: hidden;
 }
@@ -208,6 +212,36 @@ img {
 
 .margin-top-1 {
     margin-top: 1rem;
+}
+
+.margin-top-2 {
+    margin-top: 2rem;
+}
+
+.margin-top-3 {
+    margin-top: 3rem;
+}
+
+.margin-top-4 {
+    margin-top: 4rem;
+}
+
+.margin-top-5 {
+    margin-top: 5rem;
+}
+
+/* BASE BUTTON */
+.base-button {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+    cursor: pointer;
+    text-align: center;
+    padding: 1rem;
+    transition: color 300ms ease-in-out;
+}
+
+.base-button:hover {
+    color: var(--color-primary);
 }
 
 .main-logo {
@@ -429,20 +463,15 @@ img {
 }
 
 .recipe-footer a {
-    background: var(--color-primary-dark);
     display: block;
     color: var(--color-white);
-    text-align: center;
     padding: 1.5rem var(--spacing-gutter-medium);
-    transition: all 300ms ease-in-out;
     bottom: 0;
 }
 
 .recipe-footer a:hover {
     filter: brightness(1.3);
-    color: var(--color-primary)
 }
-
 
 .main-footer {
     display: flex;
@@ -658,37 +687,85 @@ img {
     border-radius: 3px;
 }
 
-.profile-portail {
+.bio-container {
+    width: 50%;
     position: relative;
-    min-height: 40rem;
+}
+
+.profile-portail {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
+    min-height: 37rem;
+    gap: 10rem;
 }
 
 .profile-image-container {
     overflow: hidden;
     width: 25rem;
+}
+
+.profile-image-container img {
+    min-width: 25rem;
+}
+
+.image-portail {
     border-radius: 60px;
+}
+
+.save-image-button {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: .4rem;
+}
+
+.edit-image-button {
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+}
+
+.profile-button {
+    width: 80%;
+    padding: 1.3rem;
+    border-radius: 20px;
+    margin-bottom: 3rem;
     position: absolute;
-    top: 0;
-    left: 30rem;
+    bottom: 0;
+    right: 0;
 }
 
+.bio-form {
+    width: 100%;
+    height: 70%;
+}
 
-
-
-
-
-
-/* BOTÃO FODA PARA SER USADO */
-
-#choice-button {
-    margin-top: .5rem;;
+.bio-form textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
     padding: 1rem;
-    border: solid 2px var(--color-primary-dark);
-    border-radius: 10px;
-    background: none;
 }
 
-#choice-button:hover {
-    border-color: var(--color-primary-hover);
-    background: var(--color-gray-3);
+.bio-form textarea:not(.show-bio) {
+    background: var(--color-gray-2);
+    border: 2.5px solid black;
+    border-radius: 15px;
+}
+
+.show-bio {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: default;
+    text-align: center;
+}
+
+.form-with-count {
+    height: 100%;
+}
+
+.form-length-count {
+    position: absolute;
+    bottom: 12rem;
+    right: 1rem;
 }

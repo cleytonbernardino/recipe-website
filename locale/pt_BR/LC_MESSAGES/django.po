@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-19 23:46-0300\n"
+"POT-Creation-Date: 2024-07-15 12:31-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,14 @@ msgstr ""
 #: .\authors\templates\authors\pages\profile.html:4
 msgid "Profile"
 msgstr "Perfil"
+
+#: .\authors\templates\authors\pages\profile.html:28
+msgid "Edit Bio"
+msgstr "Editar Bio"
+
+#: .\authors\templates\authors\pages\profile.html:42
+msgid "Edit"
+msgstr "Editar"
 
 #: .\base_templates\global\partials\menu.html:4
 msgid "Show Menu"
