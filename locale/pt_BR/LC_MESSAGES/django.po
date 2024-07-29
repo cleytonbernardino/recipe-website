@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 12:31-0300\n"
+"POT-Creation-Date: 2024-07-28 22:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
 #: .\authors\templates\authors\pages\profile.html:4
 msgid "Profile"
 msgstr "Perfil"
@@ -26,9 +25,26 @@ msgstr "Perfil"
 msgid "Edit Bio"
 msgstr "Editar Bio"
 
-#: .\authors\templates\authors\pages\profile.html:42
+#: .\authors\templates\authors\pages\profile.html:47
+msgid "Save"
+msgstr "Salvar"
+
+#: .\authors\templates\authors\pages\profile.html:52
+#: .\authors\templates\authors\partials\recipe-preview.html:66
 msgid "Edit"
 msgstr "Editar"
+
+#: .\authors\templates\authors\pages\search.html:10
+msgid "There is no author with that username"
+msgstr "Não há nenhum autor com esse nome de usuário"
+
+#: .\authors\templates\authors\partials\author.html:17
+msgid "Last Login"
+msgstr "Útima Entrada"
+
+#: .\authors\templates\authors\partials\author.html:27
+msgid "View Profile"
+msgstr "Ver Perfil"
 
 #: .\base_templates\global\partials\menu.html:4
 msgid "Show Menu"
@@ -42,13 +58,9 @@ msgstr "Fechar Menu"
 msgid "Home"
 msgstr "Início"
 
-#: .\base_templates\global\partials\menu.html:17
-msgid "Dashboard"
-msgstr "Painel"
-
 #: .\base_templates\global\partials\menu.html:18
 msgid "My Profile"
-msgstr "Meu perfil"
+msgstr "Meu Perfil"
 
 #: .\base_templates\global\partials\menu.html:22
 msgid "Logout"
@@ -62,13 +74,15 @@ msgstr "Entrar"
 msgid "Register"
 msgstr "Registrar"
 
+#: .\base_templates\global\partials\search.html:11
+msgid "Search for a recipe or @author"
+msgstr "Pesquise por uma receita ou @autor(a)"
+
 #: .\recipes\models.py:15 .\recipes\models.py:47 .\recipes\views.py:67
 msgid "Category"
 msgstr "Categoria"
 
 #: .\recipes\models.py:16
-#, fuzzy
-#| msgid "Category"
 msgid "Categorys"
 msgstr "Categorias"
 
@@ -86,7 +100,7 @@ msgstr "Receitas"
 
 #: .\recipes\models.py:29
 msgid "Title"
-msgstr "Título"
+msgstr "Titulo"
 
 #: .\recipes\models.py:30
 msgid "Description"
@@ -105,8 +119,6 @@ msgid "Servings"
 msgstr "Porções"
 
 #: .\recipes\models.py:35
-#, fuzzy
-#| msgid "Servings"
 msgid "Servings Unit"
 msgstr "Unidade de Porções"
 
@@ -132,19 +144,19 @@ msgstr "Está publicada"
 
 #: .\recipes\models.py:43
 msgid "Cover"
-msgstr ""
+msgstr "Capa"
 
 #: .\recipes\models.py:50
 msgid "Author"
 msgstr "Autor(a)"
 
-#: .\recipes\models.py:53
-msgid "Tags"
-msgstr "Tags"
+#: .\recipes\templates\recipes\pages\search.html:10
+msgid "No Recipes Have Been Published Yet"
+msgstr "Nenhuma receita foi publicada ainda"
 
 #: .\recipes\templates\recipes\partials\recipe.html:31
 msgid "UNKNOWN"
-msgstr "Deconhecido(a)"
+msgstr "DESCONHECIDO(A)"
 
 #: .\recipes\templates\recipes\partials\recipe.html:70
 msgid "Read More"

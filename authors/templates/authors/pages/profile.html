@@ -4,64 +4,64 @@
 {% block title %}{% translate "Profile" %}{% endblock title %}
 
 {% block content %}
-    <div class="main-content center profile-container">
-        <div class="profile-content">
-            <h2>{{ profile.author.username }}</h2>
-            <div class="profile-portail margin-top-2">
-                <div class="bio-container">
-                    {% if is_owner %}
-                        <form action="{% url "authors:profile_update_profile" %}" method="post" class="bio-form">
-                            {% csrf_token %}
-                            <div class="form-with-count">
-                                <textarea 
-                                    name="text-bio"
-                                    id="text-bio"
-                                    class="show-bio"
-                                    max-length="255"
-                                    onkeyup="charCount(this)"
-                                    readonly
-                                >{{ profile.bio }}</textarea>
-                                <span id="current-char" class="form-length-count hidden">0/255</span>
-                            </div>
-                            <button type="submit" class="base-button profile-button" onclick="functinText(this)">
-                                <i class="fa-solid fa-pencil"></i> 
-                                {% translate "Edit Bio" %}
-                            </button>
-                        </form>
-                    {% else %}
-                        <div class="bio-content">{{ profile.bio }}</div>
-                    {% endif %} 
-                </div>        
-                <div class="profile-image-container">
-                    {% if is_owner %}
-                        <form
-                            action="{% url "authors:profile_update_profile" %}"
-                            id="profile-image-form"
-                            method="POST"
-                            enctype="multipart/form-data"
-                        >
-                            {% csrf_token %}
-                            <input type="file" name="profile-image-input" style="height:0px;overflow:hidden" accept=".jpg, .png">
-                            <button class="base-button save-image-button hidden">
-                                <i class="fa-solid fa-floppy-disk"></i> 
-                                {% translate "Save" %}
-                            </button>
-                            <img src="{{ image }}" alt="Profile Picture"  id="author-image" style="border-radius: 20px 20px 0 0;">
-                            <button type="button" class="base-button edit-image-button" onclick="chooseFile()">
-                                <i class="fa-solid fa-pencil"></i> 
-                                {% translate "Edit" %}
-                            </button>
-                        </form>
-                    {% else %}
-                            <img src="/media/missionImage.jpg" alt="Profile Picture"  class="margin-top-1 image-portail">
-                    {% endif %}
-                </div>
-            </div>
-            <div class="profile-recipes main-content main-content-list container">
-                {% for recipe in recipes %}
-                    {% include "recipes/partials/recipe.html" %}
-                {% endfor %}
+<div class="main-content center profile-container">
+    <div class="profile-content">
+        <h2>{{ profile.author.username }}</h2>
+        <div class="profile-portail margin-top-2">
+            <div class="bio-container">
+                {% if is_owner %}
+                    <form action="{% url "authors:profile_update_profile" %}" method="post" class="bio-form">
+                        {% csrf_token %}
+                        <div class="form-with-count">
+                            <textarea 
+                                name="text-bio"
+                                id="text-bio"
+                                class="show-bio"
+                                max-length="255"
+                                onkeyup="charCount(this)"
+                                readonly
+                            >{{ profile.bio }}</textarea>
+                            <span id="current-char" class="form-length-count hidden">0/255</span>
+                        </div>
+                        <button type="submit" class="base-button profile-button" onclick="functinText(this)">
+                            <i class="fa-solid fa-pencil"></i> 
+                            {% translate "Edit Bio" %}
+                        </button>
+                    </form>
+                {% else %}
+                    <div class="bio-content">{{ profile.bio }}</div>
+                {% endif %} 
+            </div>        
+            <div class="profile-image-container">
+                {% if is_owner %}
+                    <form
+                        action="{% url "authors:profile_update_profile" %}"
+                        id="profile-image-form"
+                        method="POST"
+                        enctype="multipart/form-data"
+                    >
+                        {% csrf_token %}
+                        <input type="file" name="profile-image-input" style="height:0px;overflow:hidden" accept=".jpg, .png">
+                        <button class="base-button save-image-button hidden">
+                            <i class="fa-solid fa-floppy-disk"></i> 
+                            {% translate "Save" %}
+                        </button>
+                        <img src="{{ image }}" alt="Profile Picture"  id="author-image" style="border-radius: 20px 20px 0 0;">
+                        <button type="button" class="base-button edit-image-button" onclick="chooseFile()">
+                            <i class="fa-solid fa-pencil"></i> 
+                            {% translate "Edit" %}
+                        </button>
+                    </form>
+                {% else %}
+                        <img src="/media/missionImage.jpg" alt="Profile Picture"  class="margin-top-1 image-portail">
+                {% endif %}
             </div>
         </div>
+        <div class="profile-recipes main-content main-content-list container">
+            {% for recipe in recipes %}
+                {% include "recipes/partials/recipe.html" %}
+            {% endfor %}
+        </div>
     </div>
+</div>
 {% endblock content %}

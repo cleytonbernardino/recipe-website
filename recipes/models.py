@@ -50,7 +50,7 @@ class Recipe(models.Model):
         User, on_delete=models.SET_NULL, null=True, verbose_name=_('Author')
     )
     tags = models.ManyToManyField(
-        Tag, blank=True, default='', verbose_name=_('Tags')
+        Tag, blank=True, default='', verbose_name='Tags'
     )
 
     def __str__(self) -> str:

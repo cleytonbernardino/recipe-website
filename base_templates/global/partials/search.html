@@ -1,12 +1,15 @@
+{% load i18n %}
+
 <div class="search-container">
     <div class="container">
-        <form action="{% url 'recipes:search' %}" class='search-form'>
+        <form action="{% url 'recipes:search' %}" class='search-form' onsubmit='isAuthor(this, "{% url "authors:profile_search" %}")'>
             <input 
                 type="search" 
                 class='search-input' 
                 name='search' 
                 value="{{ search_term }}" 
-                placeholder="Search for a recipe..."
+                placeholder="{% translate "Search for a recipe or @author" %}"
+                autocomplete='off'
                 required
             >
             <button type="submit" class='search-button'><i class='fas fa-search'></i></button>

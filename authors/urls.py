@@ -30,5 +30,6 @@ urlpatterns = [
     path(
         'profile/updateProfile/',
         views.ProfileView.as_view(), name='profile_update_profile'
-    )
+    ),
+    path('profile/search/', views.author_search, name='profile_search'),
 ]

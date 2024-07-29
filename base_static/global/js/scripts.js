@@ -124,3 +124,11 @@ function chooseFile() {
        imagePortail.setAttribute('src', tempURL)
     }, {once: true})
 }
+
+function isAuthor(searchForm, authorUrl) {
+    const searchInput = document.getElementsByName('search')[0]
+
+    if (searchInput.value[0] === '@') {
+        searchForm.setAttribute('action', authorUrl)
+    }
+}

@@ -1,3 +1,4 @@
+{% load i18n %}
 
 <div class="recipe recipe-list-item">
     <div class="recipe-cover">
@@ -24,7 +25,7 @@
     
         <div class="recipe-author">
             <span class="recipe-author-item"><!--AUTOR-->
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user"></i>2
                 {{ recipe.author.username }}
 
             </span>
@@ -60,12 +61,9 @@
         </div>
 
         <footer class="recipe-footer">
-            <a 
-            href="{% url 'authors:dashboard_recipe_edit' recipe.id %}" 
-            class="recipe-read-more button-dark button-full-width"
-            >
+            <a href="{% url 'authors:dashboard_recipe_edit' recipe.id %}" class="recipe-read-more base-button">
                 <i class="fa-solid fa-pen"></i>
-                <span>Editar</span>
+                <span>{% translate "Edit" %}</span>
             </a>
         </footer>
 

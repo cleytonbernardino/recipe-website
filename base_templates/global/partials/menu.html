@@ -14,7 +14,7 @@
         <nav class="menu-nav">
         <a href="{% url "recipes:home" %}">{% translate "Home" %}</a>
         {% if user.is_authenticated %}
-            <a href="{% url "authors:dashboard" %}">{% translate "Dashboard" %}</a>
+            <a href="{% url "authors:dashboard" %}">Dashboard</a>
             <a href="{% url "authors:profile_detail" user.id %}">{% translate "My Profile" %}</a>
             <form class="logout-form" action="{% url 'authors:logout' %}" method='POST'>
                 {% csrf_token %}

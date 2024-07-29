@@ -3,6 +3,7 @@ from os import environ
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -72,6 +73,15 @@ def login_create(request):
 
     messages.error(request, 'invalid credentials')
     return redirect('authors:login')
+
+
+def author_search(request):
+    author_username = request.GET.get('search', '')
+    authors = User.objects.filter(username__startswith=author_username[1:])
+
+    return render(request, 'authors/pages/search.html', context={
+        'authors': authors,
+    })
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')

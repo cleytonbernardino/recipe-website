@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<div class="recipe recipe-list-item">
+    <div class="recipe-cover">
+        <a href="{% url 'authors:profile_detail' author.id %}">
+            {% if author.profile.profile_picture.url is not None %}
+                <img src="{{ author.profile.profile_picture.url }}" alt="Uma Imagem vazia ">
+            {% else %}
+                <img src="/media/missionImage.jpg" alt="Uma Imagem vazia ">
+            {% endif %}
+        </a>
+        <div class="recipe-title-container">
+            <h2 class="author-title">{{ author.username }}</h2>
+        </div> 
+    
+        <div class="author-last-login">
+            <div class="author-item">{% translate "Last Login" %}</div>
+            <span class="author-item">
+                <i class="fas fa-calendar-alt"></i>
+                {{ author.last_login|date:"d/m/Y" }} às {{ author.last_login|date:"H:i" }}
+            </span>
+        </div>
+
+        <footer class="recipe-footer">
+            <a href="{{ author.profile.get_absolute_url }}" class="base-button recipe-read-more">
+                <i class="fas fa-eye"></i>
+                <span>{% translate "View Profile" %}...</span>
+            </a>
+        </footer>
+    </div>
+</div>
