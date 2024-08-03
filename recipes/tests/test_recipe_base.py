@@ -41,19 +41,22 @@ class RecipeMixin:
         preparation_steps='Recipe Preparation Steps',
         preparation_steps_is_html=False,
         is_published=True,
-        cover='media/recipes/covers/2022/09/06/Captura_de_Tela_1_A\
-            ovTgzu.png'
+        cover='media/media/missionImage.jpg'
     ):
 
         if category_data is None:
             category_data = {}
 
         if author_data is None:
-            author_data = {}
+            author = self.make_author()
+        elif isinstance(author_data, dict):
+            author = self.make_author(**author_data)
+        else:
+            author = author_data
 
         return Recipe.objects.create(
             category=self.make_category(**category_data),
-            author=self.make_author(**author_data),
+            author=author,
             title=title,
             description=description,
             slug=slug,

@@ -8,13 +8,14 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from tag.models import Tag
+from utils.image_resize import resize_image
 
 
 class Category(models.Model):
     class Meta:
         verbose_name = _('Category')
         verbose_name_plural = _('Categorys')
-    
+
     name = models.CharField(max_length=65, verbose_name=_("Name"))
 
     def __str__(self):
@@ -57,6 +58,7 @@ class Recipe(models.Model):
         return self.title
 
     def get_absolute_url(self) -> str:
+        """Returns the url of the current recipe"""
         return reverse('recipes:recipe', args=(self.pk,))
 
     def save(self, *args, **kwargs):
@@ -64,9 +66,12 @@ class Recipe(models.Model):
             slug = str(slugify(self.title))
             self.slug = slug
 
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
-    def clean(self, *args, **kwargs):
+        if self.cover:
+            resize_image(self.cover, 840)
+
+    def clean(self):
         error_messages = defaultdict(list)
 
         recipe_from_db = Recipe.objects.filter(

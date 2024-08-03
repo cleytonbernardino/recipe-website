@@ -31,7 +31,7 @@ class RecipeHomePageFunctionTest(RecipeBaseFunctionalTest, RecipeMixin):
         # Usuario visualiza um campo de busca com o texto "Search for a recipe..." # noqa: E501
         search_input = self.browser.find_element(
             By.XPATH,
-            '//input[@placeholder="Search for a recipe..."]'
+            '//input[@placeholder="Search for a recipe or @author"]'
         )
 
         # Clica no input e digita "Recipe title"
