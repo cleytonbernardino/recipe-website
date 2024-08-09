@@ -26,8 +26,7 @@ class RecipeModelTest(RecipeTestBase):
             servings=5,
             servings_unit='Porção',
             preparation_steps='Recipe Preparation Steps',
-            cover='media/recipes/covers/2022/09/06/Captura_de_Tela_1_A\
-                ovTgzu.png'
+            cover='missionImage.jpg'
         )
         # recipe.full_clean() verificar pq essa função parou de funcionar
         recipe.save()

@@ -22,11 +22,25 @@ class Category(models.Model):
         return self.name
 
 
+class RecipeManager(models.Manager):
+    def get_published(self):
+        """
+        Returns all recipes that are published, sorted by decreasing pk
+        """
+        return self.filter(
+            is_published=True
+        )\
+            .order_by('-id') \
+            .select_related('category', 'author') \
+            .prefetch_related('tags')[:20]
+
+
 class Recipe(models.Model):
     class Meta:
         verbose_name = _('Recipe')
         verbose_name_plural = _('Recipes')
 
+    objects = RecipeManager()
     title = models.CharField(max_length=65, verbose_name=_('Title'))
     description = models.CharField(max_length=165, verbose_name=_('Description'))
     slug = models.SlugField(unique=True)
@@ -81,7 +95,7 @@ class Recipe(models.Model):
         if recipe_from_db:
             if recipe_from_db.pk != self.pk:
                 error_messages['title'].append(
-                    'This title is already in use'
+                    _('This title is already in use')
                 )
 
         if error_messages:

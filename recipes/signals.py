@@ -2,8 +2,9 @@
     Django signal handling module
 """
 
-from os import remove
+from os import path, remove
 
+from django.conf import settings
 from django.db.models.signals import pre_delete, pre_save
 from django.dispatch import receiver
 
@@ -16,6 +17,9 @@ def delete_cover(instance):
         If the instance does not have a cover, nothing happens.
     """
     try:
+        placeholder_path = path.join(settings.BASE_DIR, 'media\\missionImage.jpg')
+        if instance.cover.path == placeholder_path:
+            return
         remove(instance.cover.path)
     except (ValueError, FileNotFoundError):
         pass

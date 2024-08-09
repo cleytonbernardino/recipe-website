@@ -7,5 +7,6 @@ from .assets import *
 from .databases import *
 from .i18n import *
 from .messages import *
+from .rest_framework_config import *
 from .security import *
 from .templates import *

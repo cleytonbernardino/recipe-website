@@ -41,7 +41,7 @@ class RecipeMixin:
         preparation_steps='Recipe Preparation Steps',
         preparation_steps_is_html=False,
         is_published=True,
-        cover='media/media/missionImage.jpg'
+        cover='missionImage.jpg'
     ):
 
         if category_data is None:
