@@ -117,7 +117,7 @@ class RecipeListViewTag(RecipeListViewBase):
         page_title = Tag.objects.filter(slug=self.kwargs.get('slug', ''))
 
         if not page_title:
-            page_title = 'No recipes found'
+            page_title = _('No recipes found')
 
         page_title = f'{page_title} - Tag |'
 

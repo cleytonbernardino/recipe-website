@@ -4,7 +4,7 @@
     <div class="recipe-cover">
         <a href="{% url 'recipes:recipe' recipe.id %}">
             {% if recipe.cover.url is not None %}
-                <img src="{{ recipe.cover.url }}" alt="Uma Imagem vazia ">
+                <img src="{{ recipe.cover.url }}" alt="Foto da receita ">
             {% else %}
                 <img src="/media/missionImage.jpg" alt="Uma Imagem vazia ">
             {% endif %}

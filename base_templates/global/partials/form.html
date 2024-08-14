@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <form class="main-form" action="{{ form_action }}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -29,7 +31,7 @@
     <div class="form-content form-content-grid">
       <div class="form-group">
         <div class="message message-error">
-          There are errors in the form, please fix them and send again.
+          {% translate "There are errors in the form, please fix them and send again." %}
         </div>
       </div>
     </div>
@@ -37,7 +39,7 @@
 
     <div class="form-content form-content-grid">
         <div class="form-grup">
-            <button type='submit'>Send</button>
+            <button type='submit'>{% translate "Send" %}</button>
         </div>
     </div>
 </form>

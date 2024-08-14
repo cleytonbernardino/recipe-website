@@ -1,11 +1,13 @@
+{% load i18n %}
+
 <form class="message-box" method="POST">
     <div class="message-content">
         <div class="message-description">
-            Do you really wanna to execute this action?
+            {% translate "Do you really wanna to execute this action?" %}
         </div>
         <div class="message-options">
-            <div id='confirm-button-yes' class="message-buttom yes">Yes</div>
-            <div id='confirm-button-no' class="message-buttom">No</div>
+            <div id='confirm-button-yes' class="message-buttom yes">{% translate "Yes" %}</div>
+            <div id='confirm-button-no' class="message-buttom">{% translate "No" %}</div>
         </div>
     </div>
 </form>

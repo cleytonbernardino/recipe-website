@@ -1,4 +1,5 @@
 {% extends 'global/base.html' %}
+{% load i18n %}
 
 {% block title %}{{ page_title }}{% endblock title %}
 
@@ -7,7 +8,7 @@
     {% for recipe in recipes %}
         {% include 'recipes/partials/recipe.html' %}
     {% empty %}
-        <h2 style='text-align: center; padding: 4rem;'>No Recipes Have Been Published Yet 😅</h2>
+        <h2 style='text-align: center; padding: 4rem;'>{% translate "No Recipes Have Been Published Yet" %} 😅</h2>
     {% endfor %}
 </div>
 {% endblock content %}
