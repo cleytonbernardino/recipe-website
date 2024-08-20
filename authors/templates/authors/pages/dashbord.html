@@ -1,6 +1,6 @@
 {% extends 'global/base.html' %}
 {% load i18n %}
-{% block title %}DashBord{% endblock title %}
+{% block title %}Dashbord{% endblock title %}
 
 {% block content %}
     <div class="main-content center container">
@@ -12,7 +12,7 @@
             <div class="author-title">
                 <h3>Your recipes </h3>
                 <div class="create-recipe-container">
-                    <a class="buttom-add-recipe" href='{% url "authors:dashboard_recipe_new" %}'>+ Recipe</a>
+                    <a class="buttom-add-recipe" href='{% url "authors:dashboard_recipe" %}'>+ Recipe</a>
                 </div>
             </div>
             

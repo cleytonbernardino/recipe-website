@@ -1,4 +1,5 @@
 from django.urls import reverse
+from django.utils.translation import gettext as _
 from parameterized import parameterized
 from pytest import mark
 from selenium.webdriver.common.by import By
@@ -113,11 +114,11 @@ class AuthorsRegisterTest(AuthorsBaseTest):
         form.submit()
 
         self.assertIn(
-            'You user is created, please log in.',
+            _('You user is created, please log in.'),
             self.browser.find_element(By.TAG_NAME, 'body').text
         )
 
-    @parameterized.expand([  # REFAZER ESSE TESTE
+    @parameterized.expand([
         ('title', 8, 'Title must at least 8 chars'),
         ('description', 20, 'Description must at least 20 chars'),
         ('preparation_steps', 60, 'Preparation steps must at least 60 chars'),
@@ -126,7 +127,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
         self.make_login()
         # Usuário abre na pagina de nova receita
         self.browser.get(
-            self.live_server_url + reverse('authors:dashboard_recipe_new'))
+            self.live_server_url + reverse('authors:dashboard_recipe'))
 
         # Usuário vê o formulario e preenche ele de forma incorreta
         form = self.browser.find_element(
@@ -151,7 +152,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
         self.make_login()
 
         self.browser.get(
-            self.live_server_url + reverse('authors:dashboard_recipe_new'))
+            self.live_server_url + reverse('authors:dashboard_recipe'))
 
         form = self.browser.find_element(
             By.XPATH, '/html/body/main/div/div[3]/form[2]')
@@ -175,7 +176,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
 
         # Usuário entra na pagina de cadastro de receitas
         self.browser.get(
-            self.live_server_url + reverse('authors:dashboard_recipe_new'))
+            self.live_server_url + reverse('authors:dashboard_recipe'))
 
         form = self.browser.find_element(
             By.XPATH, '/html/body/main/div/div[3]/form[2]')
@@ -197,7 +198,7 @@ class AuthorsRegisterTest(AuthorsBaseTest):
     def test_send_recipes_successfully(self):
         self.make_login()
         self.browser.get(
-            self.live_server_url + reverse('authors:dashboard_recipe_new'))
+            self.live_server_url + reverse('authors:dashboard_recipe'))
 
         form = self.browser.find_element(
             By.XPATH, '/html/body/main/div/div[3]/form[2]')
@@ -210,5 +211,5 @@ class AuthorsRegisterTest(AuthorsBaseTest):
         # Usuário confirma o envio do formulário
         self.browser.find_element(By.ID, 'confirm-button-yes').click()
 
-        self.assertIn("Your recipe has been successfully saved!",
+        self.assertIn(_("Your recipe has been successfully saved!"),
                       self.browser.find_element(By.TAG_NAME, 'body').text)

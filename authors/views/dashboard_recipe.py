@@ -1,90 +1,75 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.text import slugify
-from django.views import View
+from django.utils.translation import gettext as _
+from django.views.generic import FormView
 
 from authors.forms import AuthorRecipeForm
 from recipes.models import Recipe
 
 
-class DashboardRecipe(LoginRequiredMixin, View):
+class DashboardRecipe(FormView, LoginRequiredMixin):
     login_url = 'authors:login'
-    redirect_field_name = 'next'
+    template_name = 'authors/pages/dashboard-recipe.html'
+    form_class = AuthorRecipeForm
+    success_url = 'authors:dashboard_recipe_edit'
 
-    def get_recipe(self, id=None):
-        recipe = None
-        if id:
-            try:
-                recipe = Recipe.objects.get(
-                    is_published=False,
-                    author=self.request.user,
-                    pk=id
-                )
-            except Recipe.DoesNotExist:
+    def get_recipe(self, id: int, raise_except: bool = True):
+        try:
+            return Recipe.objects.get(
+                pk=id,
+                is_published=False,
+                author=self.request.user
+            )
+        except Recipe.DoesNotExist:
+            if raise_except:
                 raise Http404()
-        return recipe
+            return None
 
-    def render_recipe(self, recipe, form):
-        return render(self.request, 'authors/pages/dashboard-recipe.html',
-                      context={
-                          'recipe': recipe,
-                          'form': form,
-                      })
+    def form_valid(self, form):
+        form.clean()
+        recipe = form.save(commit=False)
+        recipe.author = self.request.user
+        recipe.preparation_steps_is_html = False
+        recipe.is_published = False
+        if recipe.slug == "":
+            recipe.slug = slugify(recipe.title)
+        recipe.save()
+        messages.success(self.request, _('Your recipe has been successfully saved!'))
+        return redirect(reverse(self.success_url, kwargs={
+            "pk": recipe.pk
+        }))
 
-    def get(self, request, id=None):
-        recipe = self.get_recipe(id)
+    def get_form_kwargs(self):
+        form_kwargs = super().get_form_kwargs()
 
-        form = AuthorRecipeForm(
-            instance=recipe,
+        pk = self.kwargs.get('pk', None)
+        if pk is None:
+            return form_kwargs
+
+        form_kwargs.update({
+            'data': self.request.POST or None,
+            'instance': self.get_recipe(pk),
+            'files': self.request.FILES or None,
+        })
+        return form_kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recipe'] = self.get_recipe(
+            self.kwargs.get('pk', 0), raise_except=False
         )
-
-        return self.render_recipe(recipe, form)
-
-    def post(self, request, id=None):
-        recipe = self.get_recipe(id)
-
-        form = AuthorRecipeForm(
-            self.request.POST or None,
-            files=self.request.FILES or None,
-            instance=recipe,
-        )
-
-        if form.is_valid():
-            form.clean()
-            recipe = form.save(commit=False)
-            recipe.author = self.request.user
-            recipe.preparation_steps_is_html = False
-            recipe.is_published = False
-            if recipe.slug == "":
-                recipe.slug = slugify(recipe.title)
-
-            recipe.save()
-            messages.success(
-                self.request, 'Your recipe has been successfully saved!')
-            return redirect(reverse('authors:dashboard_recipe_edit', kwargs={
-                'id': recipe.id,
-            }))
-
-        return self.render_recipe(recipe, form)
+        return context
 
 
 class DashboardRecipeDelete(DashboardRecipe):
-    def get(self, request):
-        raise Http404()
 
     def post(self, request):
-        try:
-            recipe = Recipe.objects.get(
-                author=request.user,
-                is_published=False,
-                pk=request.POST['id']
-            )
-        except Recipe.DoesNotExist:
-            raise Http404()
-
+        pk = request.POST.get('pk', 0)
+        recipe = self.get_recipe(pk)
         recipe.delete()
-        messages.success(request, 'Delete successfully.')
+        messages.success(request, _('Delete successfully.'))
         return redirect('authors:dashboard')

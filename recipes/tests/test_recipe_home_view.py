@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
 from django.urls import resolve, reverse
+from django.utils.translation import gettext as _
 
 from recipes import views
 
@@ -24,7 +25,7 @@ class RecipeHomeViewTest(RecipeTestBase):
     def test_recipe_home_templates_shows_no_recipes_found_if_no_recipes(self):
         response = self.client.get(reverse('recipes:home'))
         self.assertIn(
-            "<h2 style='text-align: center; padding: 4rem;'>No Recipes Have Been Published Yet 😅</h2>",  # noqa: E501
+            f"<h2 style='text-align: center; padding: 4rem;'>{_('No Recipes Have Been Published Yet')} 😅</h2>",  # noqa: E501
             response.content.decode('utf-8'),
         )
 
@@ -47,7 +48,7 @@ class RecipeHomeViewTest(RecipeTestBase):
 
         self.assertEqual(len(response_context_recipes), 0)
         self.assertIn(  # This test does the same as the one above, it's just for learning even this one  # noqa: E501
-           "<h2 style='text-align: center; padding: 4rem;'>No Recipes Have Been Published Yet 😅</h2>",  # noqa: E501
+           f"<h2 style='text-align: center; padding: 4rem;'>{_('No Recipes Have Been Published Yet')} 😅</h2>",  # noqa: E501
           content)  # noqa: E131
 
     @patch('recipes.views.PER_PAGE', new=3)

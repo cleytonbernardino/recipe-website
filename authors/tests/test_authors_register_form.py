@@ -53,7 +53,7 @@ class AuthorRegisterFormUnitTest(TestCase):
 
 class AuthorRegisterFormIntegrationTest(DjangoTestCase):
 
-    URL = reverse('authors:register_create')
+    URL = reverse('authors:register')
 
     def setUp(self, *args, **kwargs):
         self.form_data = {

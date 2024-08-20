@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 14:39-0300\n"
+"POT-Creation-Date: 2024-08-14 16:58-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\authors\forms\login.py:12
+msgid "Type you username"
+msgstr "Digite seu nome de usuário"
+
+#: .\authors\forms\login.py:13
+msgid "Type you password"
+msgstr "Digite sua senha"
 
 #: .\authors\templates\authors\pages\dashbord.html:28
 msgid "You do not have recipes, please create one."
@@ -45,11 +53,35 @@ msgstr "Não há nenhum autor com esse nome de usuário"
 
 #: .\authors\templates\authors\partials\author.html:17
 msgid "Last Login"
-msgstr "Útima Entrada"
+msgstr "Última Entrada"
 
 #: .\authors\templates\authors\partials\author.html:27
 msgid "View Profile"
 msgstr "Ver Perfil"
+
+#: .\authors\views\all.py:30
+msgid "You user is created, please log in."
+msgstr "Seu usuário foi criado, faça login."
+
+#: .\authors\views\all.py:43
+msgid "invalid credentials"
+msgstr "credenciais inválidas"
+
+#: .\authors\views\all.py:48
+msgid "You are logged in."
+msgstr "Você está logado."
+
+#: .\authors\views\all.py:79
+msgid "invalid logout request"
+msgstr "solicitação de logout inválida"
+
+#: .\authors\views\all.py:83
+msgid "Invalid logout user"
+msgstr "Usuário de logout inválido"
+
+#: .\authors\views\all.py:87
+msgid "logged out successfully"
+msgstr "desconectado com sucesso"
 
 #: .\base_templates\global\partials\confirmation_message.html:6
 msgid "Do you really wanna to execute this action?"

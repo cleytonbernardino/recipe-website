@@ -10,7 +10,7 @@
                 method="POST" 
                 action="{% url 'authors:dashboard_recipe_delete' %}">
                 {% csrf_token %}
-                <input type="hidden" name="id" value="{{ recipe.id }}">
+                <input type="hidden" name="pk" value="{{ recipe.id }}">
                 <a class="plaintext-button" onclick='deleteConfirm(this)'>❌</a>
             </form>
 
@@ -25,7 +25,7 @@
     
         <div class="recipe-author">
             <span class="recipe-author-item"><!--AUTOR-->
-                <i class="fas fa-user"></i>2
+                <i class="fas fa-user"></i>
                 {{ recipe.author.username }}
 
             </span>
